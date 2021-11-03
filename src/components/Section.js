@@ -1,19 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import Fade from "react-reveal/Fade";
 
-const Section = ({ title, description, LeftBtnText, RightBtnText }) => {
+const Section = ({
+  title,
+  description,
+  LeftBtnText,
+  RightBtnText,
+  backgroundImg,
+}) => {
   return (
-    <Wrap>
-      <ItemText>
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </ItemText>
+    <Wrap bgImage={backgroundImg}>
+      <Fade bottom>
+        <ItemText>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </ItemText>
+      </Fade>
       <Buttons>
-        <ButtonGroup>
-          <LeftButton>{LeftBtnText}</LeftButton>
-
-          <RightButton>{RightBtnText}</RightButton>
-        </ButtonGroup>
+        <Fade bottom>
+          <ButtonGroup>
+            <LeftButton>{LeftBtnText}</LeftButton>
+            {RightBtnText && <RightButton>{RightBtnText}</RightButton>}
+          </ButtonGroup>
+        </Fade>
 
         <DownArrow src="/images/down-arrow.svg" />
       </Buttons>
@@ -33,7 +43,7 @@ const Wrap = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("/images/model-s.jpg");
+  background-image: ${(props) => `url("/images/${props.bgImage}")`};
 `;
 
 const ItemText = styled.div`
