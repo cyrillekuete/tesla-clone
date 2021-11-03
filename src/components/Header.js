@@ -32,7 +32,12 @@ const Header = () => {
         <Closewrapper>
           <CustomClose onClick={() => setBurgerStatus(false)} />
         </Closewrapper>
-
+        {cars &&
+          cars.map((car, index) => (
+            <li key={index}>
+              <a href="#">{car}</a>
+            </li>
+          ))}
         <li>
           <a href="#">Existing Inventory</a>
         </li>
